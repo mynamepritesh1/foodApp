@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="details">
+        <app-title class="login" title="Register"></app-title>
+        <form [formGroup]="registerForm" (ngSubmit)="submit()">
+            <div class="input-container">
+                <label for="">Name</label>
+                    <input type="text" placeholder="Username" formControlName="name" />
+                    <a class="error-list" *ngIf="fc.name.errors && isSubmitted">
+                        <div *ngIf="fc.name.errors.required">Name Should not be empty</div>
+                        <!-- <div *ngIf="fc.name.errors.">Name is not correct</div> -->
+                    </a>
+               
+            </div>
+            <div class="input-container">
+                <label for="">Email</label>
+                    <input type="email" placeholder="Email" formControlName="email" />
+                <a class="error-list" *ngIf="fc.email.errors && isSubmitted">
+                    <div *ngIf="fc.email.errors.required">Email Should not be empty</div>
+                    <div *ngIf="fc.email.errors.email">Email is not correct</div>
+                </a>
+            </div>
+            <div class="input-container1">
+            <label for="" class="password">Password</label>
+                <input type="password" placeholder="Password" formControlName="password" />
+            <a class="error-list" *ngIf="fc.password.errors && isSubmitted">
+                <div *ngIf="fc.password.errors.required">Password Should not be empty</div>
+                <!-- <div *ngIf="fc.password.errors.minLength">Password is too short</div> -->
+            </a>
+        </div>
+            <div class="input-container1">
+                <label for="" class="password">Confirm Password</label>
+                    <input type="password" placeholder="confirm password" formControlName="confirmPassword" />
+                <a class="error-list" *ngIf="fc.confirmPassword.errors && isSubmitted">
+                    <div *ngIf="fc.confirmPassword.errors.required">Password should not match</div>
+                    <!-- <div *ngIf="fc.confirmPassword.errors.password">Password does not match</div> -->
+                </a>
+            </div>
+            <div class="input-container1">
+                <label for="" class="address">Address</label>
+                    <input type="text" placeholder="Address" formControlName="address" />
+                    <a class="error-list" *ngIf="fc.address.errors && isSubmitted">
+                        <div *ngIf="fc.address.errors.required">Address Should not be empty</div>
+                        <div *ngIf="fc.address.errors.email">Address is not correct</div>
+                    </a>
+            </div>
+            <div>
+                <button (click)="onClick.emit()" class="button" type="submit">Register</button>
+            </div>
+            <div class="Login">Already a user? &nbsp;
+                <a routerLink="/login" [queryParams]="{returnUrl: returnUrl}" #lg >Login Here</a>
+            </div>
+        </form>
+    </div>
+</div>
