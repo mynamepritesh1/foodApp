@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="details">
+        <app-title class="login" title="Login"></app-title>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+            <!-- <input-container lebel="Email">
+               
+            </input-container> -->
+            <div class="input-container">
+                <label for="">Email</label>
+                    <input type="email" placeholder="Email" formControlName="email" />
+                <a class="error-list" *ngIf="fc.email.errors && isSubmitted">
+                    <div *ngIf="fc.email.errors.required">Email Should not be empty</div>
+                    <div *ngIf="fc.email.errors.email">Email is not correct</div>
+                </a>
+            </div>
+            <div class="input-container1">
+                <label for="" class="password">Password</label>
+                    <input type="password" placeholder="Password" formControlName="password" />
+                <a class="error-list" *ngIf="fc.password.errors && isSubmitted">
+                    <div *ngIf="fc.password.errors.required">Password Should not be empty</div>
+                    <div *ngIf="fc.password.errors.password">Password is not correct</div>
+                </a>
+            </div>
+            <div>
+                <button (click)="onClick.emit()" class="button" type="submit">Submit</button>
+            </div>
+            <div class="Login">New user? &nbsp;
+                <a routerLink="/register" [queryParams]="{returnUrl: returnUrl}">Register Here</a>
+            </div>
+        </form>
+    </div>
+</div>
